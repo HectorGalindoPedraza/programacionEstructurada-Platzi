@@ -15,8 +15,8 @@
 
 int main(){
 
-    int promedio[4][5];
-    int nota;
+    float promedio[4][5];
+    float nota;
     char subjects[5][15];
 
     
@@ -29,35 +29,37 @@ int main(){
 
        
     for (int filas = 0; filas <= 4; filas++){
-        int suma;
+        float suma;
 
         for (int columnas = 0; columnas <= 5; columnas++){
-               
+            promedio[filas][5] = 0;
            if(columnas != 5){
             printf("ingrese la nota [%i] de %s: ", columnas+1, subjects[filas]); 
-            scanf("%i", &nota);
+            scanf("%f", &nota);
+            promedio[filas][columnas] = nota; 
             suma += promedio[filas][columnas];
             printf("columna: %i, fila: %i\n",columnas, filas);
 
                 if(nota <= 10 && nota >= 6){        
                 promedio[filas][columnas] = nota;
-                printf("La nota es: %i\n", promedio[filas][columnas]);
+                printf("La nota es: %f\n\n", promedio[filas][columnas]);
                
                 }else{                             
                     while(nota < 6 || nota > 10){   
-                        printf("Ingrese una nota entre 6 y 10: ");
-                        scanf("%i", &nota);
+                        printf("\nIngrese una nota entre 6 y 10: ");
+                        scanf("%f", &nota);
                         promedio[filas][columnas] = nota;
                         suma += promedio[filas][columnas];
-                        printf("La nota es: %i\n", promedio[filas][columnas]);
+                        printf("La nota es: %f\n", promedio[filas][columnas]);
                     }
                 }
            }else{
                suma /= 5;
                promedio[filas][columnas] = suma;
-               printf("El promedio de la lista %i es: %i\n", filas, promedio[filas][columnas]);
+               printf("El promedio de %s es: %f\n", subjects[filas], promedio[filas][columnas]);
            }
         }
+        suma = 0;
     }
         
     return 0; 
